@@ -15,7 +15,12 @@
     "test": "vitest",
     "test:run": "vitest --run",
     "test:ui": "vitest --ui",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "db": "npx prisma studio",
+    "db:generate": "npx prisma generate",
+    "db:push": "npx prisma db push",
+    "db:migrate": "npx prisma migrate dev",
+    "db:seed": "npx prisma db seed"
   },
   "keywords": [],
   "author": "Emanuele Favero <emafaux89@gmail.com> (https://emanuelefavero.com/)",
@@ -25,7 +30,11 @@
     "@/*": "./src/*"
   },
   "dependencies": {
-    "express": "^5.1.0"
+    "@prisma/client": "^6.19.0",
+    "@types/bcrypt": "^6.0.0",
+    "bcrypt": "^6.0.0",
+    "express": "^5.1.0",
+    "prisma": "^6.19.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
