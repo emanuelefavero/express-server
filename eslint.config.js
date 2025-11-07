@@ -1,7 +1,6 @@
 // @ts-check
 
 import eslint from '@eslint/js'
-import perfectionist from 'eslint-plugin-perfectionist'
 import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
@@ -19,5 +18,4 @@ export default tseslint.config(
       },
     },
   },
-  perfectionist.configs['recommended-natural'],
 )
