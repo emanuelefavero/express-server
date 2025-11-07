@@ -2,15 +2,26 @@
 # Make sure your server is running on http://localhost:3000
 # And you have seeded the database with npm run db:seed (just once)
 
+# --- VARIABLES ---
 @baseUrl = http://localhost:3000
+@adminEmail = {{$dotenv ADMIN_EMAIL}}
+@adminPassword = {{$dotenv ADMIN_PASSWORD}}
+@employeeEmail = {{$dotenv EMPLOYEE_EMAIL}}
+@employeePassword = {{$dotenv EMPLOYEE_PASSWORD}}
+
+# JWT Test Token
+# BEWARE: paste a valid token here after login, no quotes
+@jwtToken = abCdeF12...
+
+# --- LOGIN ROUTES ---
 
 ### 1. Test Login with Admin Credentials
 POST {{baseUrl}}/api/auth/login
 Content-Type: application/json
 
 {
-  "email": "admin@example.com",
-  "password": "1234"
+  "email": "{{adminEmail}}",
+  "password": "{{adminPassword}}"
 }
 
 ### 2. Test Login with Employee Credentials
@@ -18,8 +29,8 @@ POST {{baseUrl}}/api/auth/login
 Content-Type: application/json
 
 {
-  "email": "employee@example.com",
-  "password": "1234"
+  "email": "{{employeeEmail}}",
+  "password": "{{employeePassword}}"
 }
 
 ### 3. Test Login with Invalid Credentials
@@ -27,24 +38,26 @@ POST {{baseUrl}}/api/auth/login
 Content-Type: application/json
 
 {
-  "email": "admin@example.com",
-  "password": "wrongpassword"
+  "email": "{{adminEmail}}",
+  "password": "wrong.password"
 }
 
+# --- ROUTES WITH JWT TOKEN ---
+
 ### 4. Test Protected Route (requires authentication)
-# Replace YOUR_JWT_TOKEN with the token from step 1 or 2
+# NOTE: Paste a valid token from step 1 or 2 in jwtToken variable above ↑
 GET {{baseUrl}}/api/protected
-Authorization: Bearer YOUR_JWT_TOKEN
+Authorization: Bearer {{jwtToken}}
 
 ### 5. Test Admin-Only Route (requires admin role)
-# Replace YOUR_ADMIN_JWT_TOKEN with admin token from step 1
+# NOTE: Paste a valid admin token from step 1 in jwtToken variable above ↑
 GET {{baseUrl}}/api/admin-only
-Authorization: Bearer YOUR_ADMIN_JWT_TOKEN
+Authorization: Bearer {{jwtToken}}
 
 ### 6. Test Admin-Only Route with Employee Token (should fail)
-# Replace YOUR_EMPLOYEE_JWT_TOKEN with employee token from step 2
+# NOTE: Paste a valid employee token from step 2 in jwtToken variable above ↑
 GET {{baseUrl}}/api/admin-only
-Authorization: Bearer YOUR_EMPLOYEE_JWT_TOKEN
+Authorization: Bearer {{jwtToken}}
 
 ### 7. Test Protected Route without Token (should fail)
 GET {{baseUrl}}/api/protected
@@ -52,7 +65,7 @@ GET {{baseUrl}}/api/protected
 ### 8. Test Get Current User Info
 # Replace YOUR_JWT_TOKEN with any valid token
 GET {{baseUrl}}/api/auth/me
-Authorization: Bearer YOUR_JWT_TOKEN
+Authorization: Bearer {{jwtToken}}
 
 ### 9. Test Public Route (no auth required)
 GET {{baseUrl}}/
