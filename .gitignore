@@ -142,3 +142,6 @@ vite.config.ts.timestamp-*
 
 # Mac system files
 .DS_Store
+
+# GitHub Copilot Instructions
+.github/copilot-instructions.md
