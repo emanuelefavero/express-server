@@ -1,0 +1,40 @@
+{
+  "name": "express-server",
+  "version": "1.0.0",
+  "description": "This is a simple Express server template set up with TypeScript for building RESTful APIs.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx --watch src/index.ts",
+    "start": "node dist/index.js",
+    "build": "tsc",
+    "type-check": "tsc --noEmit",
+    "lint": "eslint ./src/**/*.{ts,tsx,js,jsx}",
+    "lint:fix": "eslint --fix ./src/**/*.{ts,tsx,js,jsx}",
+    "format": "prettier --write ./src/**/*.{ts,tsx,js,jsx,json,md}",
+    "format:check": "prettier --check ./src/**/*.{ts,tsx,js,jsx,json,md}",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Emanuele Favero <emafaux89@gmail.com> (https://emanuelefavero.com/)",
+  "license": "MIT",
+  "type": "module",
+  "imports": {
+    "@/*": "./src/*"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@tsconfig/node22": "^22.0.2",
+    "@types/express": "^5.0.5",
+    "@types/node": "^24.10.0",
+    "eslint": "^9.39.1",
+    "eslint-plugin-perfectionist": "^4.15.1",
+    "prettier": "^3.6.2",
+    "prettier-plugin-organize-imports": "^4.3.0",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.3"
+  }
+}
