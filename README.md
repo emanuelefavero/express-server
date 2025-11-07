@@ -29,4 +29,12 @@ To get started with this project, follow these steps:
 
 ## License
 
-MIT License
+- [MIT](LICENSE.md)
+
+&nbsp;
+
+---
+
+&nbsp;
+
+[**Go To Top &nbsp; ⬆️**](#express-server)
