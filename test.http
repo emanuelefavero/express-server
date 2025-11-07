@@ -1,0 +1,58 @@
+# JWT Authentication Testing
+# Make sure your server is running on http://localhost:3000
+# And you have seeded the database with npm run db:seed (just once)
+
+@baseUrl = http://localhost:3000
+
+### 1. Test Login with Admin Credentials
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@example.com",
+  "password": "1234"
+}
+
+### 2. Test Login with Employee Credentials
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "employee@example.com",
+  "password": "1234"
+}
+
+### 3. Test Login with Invalid Credentials
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@example.com",
+  "password": "wrongpassword"
+}
+
+### 4. Test Protected Route (requires authentication)
+# Replace YOUR_JWT_TOKEN with the token from step 1 or 2
+GET {{baseUrl}}/api/protected
+Authorization: Bearer YOUR_JWT_TOKEN
+
+### 5. Test Admin-Only Route (requires admin role)
+# Replace YOUR_ADMIN_JWT_TOKEN with admin token from step 1
+GET {{baseUrl}}/api/admin-only
+Authorization: Bearer YOUR_ADMIN_JWT_TOKEN
+
+### 6. Test Admin-Only Route with Employee Token (should fail)
+# Replace YOUR_EMPLOYEE_JWT_TOKEN with employee token from step 2
+GET {{baseUrl}}/api/admin-only
+Authorization: Bearer YOUR_EMPLOYEE_JWT_TOKEN
+
+### 7. Test Protected Route without Token (should fail)
+GET {{baseUrl}}/api/protected
+
+### 8. Test Get Current User Info
+# Replace YOUR_JWT_TOKEN with any valid token
+GET {{baseUrl}}/api/auth/me
+Authorization: Bearer YOUR_JWT_TOKEN
+
+### 9. Test Public Route (no auth required)
+GET {{baseUrl}}/
