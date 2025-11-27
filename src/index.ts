@@ -1,6 +1,6 @@
-import { authenticateToken, requireAdmin } from '@/middlewares/auth.js'
-import { middleware } from '@/middlewares/middleware.js'
-import authRoutes from '@/routes/auth.js'
+import { authenticateToken, requireAdmin } from '#src/middlewares/auth.js'
+import { middleware } from '#src/middlewares/middleware.js'
+import authRoutes from '#src/routes/auth.js'
 import express from 'express'
 
 const app = express()

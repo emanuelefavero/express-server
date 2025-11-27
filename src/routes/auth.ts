@@ -1,5 +1,5 @@
-import { authenticateToken } from '@/middlewares/auth.js'
-import { generateToken, verifyPassword } from '@/utils/auth.js'
+import { authenticateToken } from '#src/middlewares/auth.js'
+import { generateToken, verifyPassword } from '#src/utils/auth.js'
 import { PrismaClient } from '@prisma/client'
 import { Request, Response, Router } from 'express'
 

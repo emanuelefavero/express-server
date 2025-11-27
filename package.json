@@ -18,25 +18,25 @@
     "coverage": "vitest run --coverage",
     "db": "npx prisma studio",
     "db:generate": "npx prisma generate",
-    "db:push": "npx prisma db push",
-    "db:migrate": "npx prisma migrate dev",
-    "db:seed": "npx prisma db seed"
+    "db:push": "dotenv -e .env -- npx prisma db push",
+    "db:migrate": "dotenv -e .env -- npx prisma migrate dev",
+    "db:seed": "dotenv -e .env -- npx prisma db seed"
   },
   "keywords": [],
   "author": "Emanuele Favero <emafaux89@gmail.com> (https://emanuelefavero.com/)",
   "license": "MIT",
   "type": "module",
   "imports": {
-    "@/*": "./src/*"
+    "#src/*": "./src/*"
   },
   "dependencies": {
-    "@prisma/client": "^6.19.0",
+    "@prisma/client": "6.19.0",
     "@types/bcrypt": "^6.0.0",
     "@types/jsonwebtoken": "^9.0.10",
     "bcrypt": "^6.0.0",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
-    "prisma": "^6.19.0"
+    "prisma": "6.19.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
@@ -45,6 +45,7 @@
     "@types/node": "^24.10.0",
     "@vitest/coverage-v8": "^4.0.8",
     "@vitest/eslint-plugin": "^1.4.1",
+    "dotenv-cli": "^11.0.0",
     "eslint": "^9.39.1",
     "prettier": "^3.6.2",
     "prettier-plugin-organize-imports": "^4.3.0",

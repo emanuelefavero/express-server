@@ -1,4 +1,4 @@
-import { JWTPayload, verifyToken } from '@/utils/auth.js'
+import { JWTPayload, verifyToken } from '#src/utils/auth.js'
 import { NextFunction, Request, Response } from 'express'
 
 // Extend Express Request to include user
